@@ -8,16 +8,16 @@ app.use(express.urlencoded({extended: true}));
 app.get('/', (req, res) => {
 });
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
 
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'dhandha17',
     database: 'mahasiswa',
-    port : 3307
+    port : 3306
 });
 
 db.connect(err => {
@@ -29,7 +29,7 @@ db.connect(err => {
 })
 
 // Method get
-app.get('api/users', (req, res) => {
+app.get('/api/users', (req, res) => {
     db.query('SELECT * FROM mahasiswa', (err, results) => {
         if (err) {
             console.error('Error executing query:0' + err.stack);
